@@ -1,0 +1,17 @@
+<section id="events" class="events" ng-controller="EventsCtrl">
+    <div class="container">
+
+      
+                <slick slides-to-show="2" settings="slickConfig">
+                    <div class="slide z-depth-2" ng-repeat="item in event" >
+                        <img ng-src="{{item.img}}">
+                        <div class="event-info">
+                            <h4>{{item.header}}</h4>
+                            <p>{{item.text}}</p>
+                        </div>
+                    </div>
+                </slick>
+
+
+    </div>
+</section>

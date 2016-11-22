@@ -1,0 +1,16 @@
+<section id="video" class="video" ng-controller="VideoCtrl">
+    <div class="container">
+        <div class="valign-wrapper">
+            <slick slides-to-show="1" settings="slickConfig">
+                <div class="slide valign" ng-repeat="item in video" >
+                    <div class="embed-container">
+                        <iframe ng-src="{{item.trustedUrl}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-title">
+                    	{{item.title}}
+                    </div>
+                </div>
+            </slick>
+        </div>
+    </div>
+</section>

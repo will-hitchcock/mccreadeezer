@@ -1,0 +1,23 @@
+.events {
+	position: relative;
+	.container {
+		position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	}
+	.slide {
+		height: auto;
+		.event-info {
+		    text-align: center;
+		    padding: 2rem;
+		    p {
+		    	font-size: 1rem;
+		    }
+		}
+		img {
+			width: 100%;
+			height: auto;			
+		}
+	}
+}

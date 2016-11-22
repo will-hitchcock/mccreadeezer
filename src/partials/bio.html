@@ -1,0 +1,17 @@
+<section id="bio" class="bio relative" ng-controller="BioCtrl">
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="img-wrapper">
+                <img ng-src="{{bio.leadImg}}" alt="">
+            </div>
+        </div>
+        <div class="col s12 m6 valign-wrapper">
+            <div class="container center valign">
+                <h4>{{bio.header}}</h4>
+                <div class="body-text">
+                    <p ng-repeat="item in bio.text">{{item}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

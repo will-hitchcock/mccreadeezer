@@ -1,0 +1,31 @@
+.nav {
+    z-index: 1;
+    background-color: $primary-color;
+    position: absolute;
+    height: 46px;
+    line-height: 46px;
+    bottom: -46px;
+    @media #{$medium-and-up} {
+        // styles for medium screens and larger
+        //desktop
+    }
+    &.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    }
+    ul {
+        text-align: center;
+        li {
+            float: none;
+            display: inline;
+        }
+        span {
+            font-size: 1.6rem;
+        }
+        i.material-icons {
+            font-size: 3.2rem;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<div class="player" ng-controller="PlayerCtrl">
+    <div class="large">
+        <div class="progress">
+            <div class="determinate" style="width: {{curPosition}}%"></div>
+        </div>
+        <img ng-src="{{curSong.art}}" alt="" class="left">
+        <div class="info left">
+            <h5>{{curSong.name}}</h5>
+            <h6>{{curSong.artist}}</h6>
+        </div>
+        <div class="controls right valign-wrapper">
+            <i class="material-icons valign" ng-click="prev()">fast_rewind</i>
+            <i class="material-icons valign" ng-click="playPause()">{{(playing) ? 'pause' : 'play_arrow'}}</i>
+            <i class="material-icons valign" ng-click="next()">fast_forward</i>
+        </div>
+    </div>
+    <div class="small">
+        <div class="fixed-action-btn">
+            <div class="btn-floating btn-large waves-effect waves-light gold right ">
+                <i class="material-icons" ng-click="playPause()">{{(playing) ? 'pause' : 'play_arrow'}}</i>
+            </div>
+        </div>
+    </div>
+</div>

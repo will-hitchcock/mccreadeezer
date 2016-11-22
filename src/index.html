@@ -1,0 +1,30 @@
+<html lang="en" ng-app="mcCreaDeezer">
+
+<head ng-controller="HeadCtrl">
+    <meta ng-repeat="item in head.metas" name="{{item.name}}" http-equiv="{{item.httpEquiv}}" content="{{item.content}}" charset="{{item.charset}}">
+    <link ng-repeat="item in head.links" rel="{{item.rel}}" ng-href="{{item.href}}">
+    <title>McCrea Deezer</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body scroll>
+    <header>
+        <div ng-include="'partials/nav.html'"></div>
+        <div ng-include="'partials/header.html'"></div>
+    </header>
+    
+    <!--<main ng-view></main>-->
+    <main ng-view>
+            <!--<div ng-include="'partials/bio.html'"></div>
+            <div ng-include="'partials/music.html'"></div>
+            <div ng-include="'partials/video.html'"></div>
+            <div ng-include="'partials/events.html'"></div>-->
+    </main>
+    <div ng-include="'partials/social.html'"></div>
+    <div ng-include="'partials/player.html'"></div>
+
+    <script src='/js/libs.js'></script>
+    <script src='/js/script.js'></script>
+</body>
+
+</html>

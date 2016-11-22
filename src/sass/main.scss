@@ -1,0 +1,16 @@
+@import './bower_components/Materialize/sass/materialize';
+/*variables needs to be imported before the default materialize variables file, this can be added in Materialize/sass/materialize.scss*/
+//@import 'variables';
+@import './bower_components/slick-carousel/slick/slick.scss';
+@import './bower_components/font-awesome/scss/font-awesome.scss';
+@import 'header';
+@import 'helpers';
+@import 'modal';
+@import 'bio';
+@import 'music';
+@import 'player';
+@import 'video';
+@import 'nav';
+@import 'events';
+@import 'fullpage';
+@import 'social';

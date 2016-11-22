@@ -1,0 +1,24 @@
+<div class="social" ng-controller="SocialCtrl">
+    <div class="large">
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large gold z-depth-2" ng-href="{{social.parent.href}}">
+                <i class="{{social.parent.icon}}"></i>
+            </a>
+            <ul>
+                <li ng-repeat="item in social.networks" ng-if="item.desktop">
+
+                    <a class="btn-floating gold z-depth-2" ng-href="{{item.href}}" target="_blank">
+                        <i class="{{item.icon}}"></i>
+                    </a> 
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="small z-depth-2">
+        <ul>
+            <li ng-repeat="item in social.networks">
+                <a class="gold" ng-href="{{item.href}}" target="_blank"><i class="{{item.icon}}"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
