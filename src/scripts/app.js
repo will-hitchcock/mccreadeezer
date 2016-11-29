@@ -46,7 +46,6 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
             };
 
             this.audioElement.onended = function() {
-                console.log('hello, song is over');
                 self.next();
             }
         },

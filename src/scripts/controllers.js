@@ -5,17 +5,11 @@ pageCtrls
         $http.get('json/head.json').success(function(data) {
             $scope.head = data;
         });
-
-
     }])
     .controller('HeaderCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('json/header.json').success(function(data) {
             $scope.header = data;
         });
-
-        $scope.stick = function($inview) {
-            $sticky.update(!$inview);
-        }
     }])
     .controller('NavCtrl', ['$scope', '$http', '$location', function($scope, $http,  $location) {
         $http.get('json/nav.json').success(function(data) {
@@ -27,7 +21,6 @@ pageCtrls
         $scope.$on('$locationChangeSuccess', function() {
             $scope.curPage = '#' + $location.url();
         });
-
     }])
     .controller('BioCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('json/bio.json').success(function(data) {
@@ -45,7 +38,6 @@ pageCtrls
         $scope.playSong = function($index) {
             $playerService.play($index);
         }
-
     }])
     .controller('VideoCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
         $http.get('json/video.json').success(function(data) {
@@ -60,7 +52,6 @@ pageCtrls
             nextArrow: '<a class="carousel-arrow next"></a>',
             enabled: false
         }
-
     }])
     .controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('json/event.json').success(function(data) {
