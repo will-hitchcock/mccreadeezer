@@ -7,21 +7,17 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body scroll>
+<body>
     <header>
         <div ng-include="'partials/nav.html'"></div>
-        <div ng-include="'partials/header.html'"></div>
     </header>
-    
-    <!--<main ng-view></main>-->
-    <main ng-view>
-            <!--<div ng-include="'partials/bio.html'"></div>
-            <div ng-include="'partials/music.html'"></div>
-            <div ng-include="'partials/video.html'"></div>
-            <div ng-include="'partials/events.html'"></div>-->
-    </main>
-    <div ng-include="'partials/social.html'"></div>
-    <div ng-include="'partials/player.html'"></div>
+
+    <main ng-view></main>
+
+    <footer>
+        <div ng-include="'partials/social.html'"></div>
+        <div ng-include="'partials/player.html'"></div>
+    </footer>
 
     <script src='/js/libs.js'></script>
     <script src='/js/script.js'></script>
