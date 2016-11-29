@@ -87,12 +87,6 @@ pageCtrls
             }],
         }
     }])
-    .controller('FooterCtrl', ['$scope', '$http', function($scope, $http) {
-        $scope.date = new Date();
-        $http.get('json/footer.json').success(function(data) {
-            $scope.footer = data;
-        });
-    }])
     .controller('PlayerCtrl', ['$scope', '$http', 'PlayerService', function($scope, $http, $playerService) {
         
         $http.get('json/music.json').success(function(data) {
