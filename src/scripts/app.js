@@ -73,15 +73,6 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
     }
 }])
 
-.factory('StickyService', ['$rootScope', '$document', function($rootScope, $document) {
-    return {
-        sticky: false,
-        update: function(sticky) {
-            this.sticky = sticky;
-        }
-    };
-}])
-
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/bio', {

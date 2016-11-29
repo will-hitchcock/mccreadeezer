@@ -3,6 +3,6 @@
     	<img ng-src="{{nav.logo.url}}" alt="">
     </a>
     <ul class="right">
-        <li ng-repeat="item in nav.links"><a ng-class="selectedIndex === $index ? 'active' : '' +' '+ item.class" ng-href="{{item.href}}"><span class="">{{item.name}}</span></a></li>
+        <li ng-repeat="item in nav.links"><a ng-class="curPage === item.href ? 'active' : ''" ng-href="{{item.href}}"><span class="">{{item.name}}</span></a></li>
     </ul>
 </nav>

@@ -8,31 +8,26 @@ pageCtrls
 
 
     }])
-    .controller('HeaderCtrl', ['$scope', '$http', 'StickyService', function($scope, $http, $sticky) {
+    .controller('HeaderCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('json/header.json').success(function(data) {
             $scope.header = data;
         });
-
-        $scope.sticky = $sticky.sticky;
 
         $scope.stick = function($inview) {
             $sticky.update(!$inview);
         }
     }])
-    .controller('NavCtrl', ['$scope', '$http', 'StickyService', function($scope, $http, $sticky) {
+    .controller('NavCtrl', ['$scope', '$http', '$location', function($scope, $http,  $location) {
         $http.get('json/nav.json').success(function(data) {
             $scope.nav = data;
         });
 
-        $scope.sticky = $sticky.sticky;
-        $scope.$watch(
-            function() {
-                return $sticky.sticky;
-            },
-            function(value) {
-                $scope.sticky = value;
-            }
-        );
+        $scope.curPage = '#' + $location.url();
+
+        $scope.$on('$locationChangeSuccess', function() {
+            $scope.curPage = '#' + $location.url();
+        });
+
     }])
     .controller('BioCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('json/bio.json').success(function(data) {
