@@ -41,8 +41,11 @@ nav.nav {
                     background-color: $gold;
                 }
             }
-            &:last-child a span{
-                border-right: none;
+            &:last-child a {
+                margin-right: 0;
+                span{
+                    border-right: none;
+                }
             }
         }
         span {
