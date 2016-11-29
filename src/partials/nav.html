@@ -1,5 +1,8 @@
-<nav ng-class="sticky ? 'sticky' : ''" class="z-depth-2 nav" ng-controller="NavCtrl">
-    <ul>
-        <li ng-repeat="item in nav"><a ng-class="selectedIndex === $index ? 'active' : '' +' '+ item.class" ng-href="{{item.href}}"><span class="">{{item.name}}</span></a></li>
+<nav class="z-depth-2 nav sticky" ng-controller="NavCtrl">
+    <a class="brand-logo left" ng-href={{nav.logo.href}}>
+    	<img ng-src="{{nav.logo.url}}" alt="">
+    </a>
+    <ul class="right">
+        <li ng-repeat="item in nav.links"><a ng-class="selectedIndex === $index ? 'active' : '' +' '+ item.class" ng-href="{{item.href}}"><span class="">{{item.name}}</span></a></li>
     </ul>
 </nav>

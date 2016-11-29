@@ -1,10 +1,13 @@
-.nav {
+nav.nav {
     z-index: 1;
     background-color: $primary-color;
     position: absolute;
     height: 46px;
     line-height: 46px;
     bottom: -46px;
+    .brand-logo.left {
+        padding: 5px 10px;
+    }
     @media #{$medium-and-up} {
         // styles for medium screens and larger
         //desktop

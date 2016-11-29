@@ -101,7 +101,8 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
             controller: 'EventsCtrl'
         })
         .otherwise({
-            redirectTo: '/bio'
+            templateUrl: 'partials/header.html',
+            controller: 'HeaderCtrl'
         })
 }])
 
