@@ -5,8 +5,11 @@
     <ul class="right">
         <li ng-repeat="item in nav.links">
         	<a ng-class="curPage === item.href ? 'active' : ''" ng-href="{{item.href}}">
-        		<i class="{{item.class}}">{{item.icon}}</i>
-        		<span class="text hide-on-small-only">{{item.name}}</span>
+        		
+        		<span class="content">
+                <i class="{{item.class}}">{{item.icon}}</i> 
+                <span class="hide-on-small-only">{{item.name}}</span>
+                </span>
         	</a>
         </li>
     </ul>
