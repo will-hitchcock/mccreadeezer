@@ -23,13 +23,27 @@ nav.nav {
     ul {
         text-align: center;
         float: none;
+        @media #{$small-and-down} {
+            //mobile
+            width:100%;
+        }
         li {
             display: inline-block;
+            @media #{$small-and-down} {
+                //mobile
+                width:33%;
+            }
             a {
                 padding: 0;
                 height: 100%;
                 margin-right: 2px;
-                span{
+                position: relative;
+                @media #{$small-and-down} {
+                    //mobile
+                    width:100%;
+                }
+
+                span {
                     border-right: 2px $offWhite solid;
                     margin-top: 11px;
                     margin-bottom: 11px;
@@ -37,8 +51,40 @@ nav.nav {
                     display: inline-block;
                     width: calc(100% + 2px);
                 }
+
+                i.site-logo {
+                    height: 46px;
+                    display: inline-block;
+                    position: absolute;
+                    margin-left: 10px;
+                    width: 28px;
+                    background-image: url(../img/logos/mccrea-deezer-logo.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                i.material-icons {
+                    height: 46px;
+                    line-height: 46px;
+                    font-size: 35px;
+                    display: inline-block;
+                    position: absolute;
+                    padding-left:10px;
+                }
+                @media #{$small-and-down} {
+                    //mobile
+                    i.site-logo, i.material-icons {
+                        margin-left:0;
+                        padding-left: 0;
+                        transform: translateX(-50%);
+                    }
+                }
                 &.active, &:hover {
                     background-color: $gold;
+                    color: $offBlack;
+                    i.site-logo {
+                        background-image: url(../img/logos/mccrea-deezer-logo-black.png);
+                    }
+
                 }
             }
             &:last-child a {
