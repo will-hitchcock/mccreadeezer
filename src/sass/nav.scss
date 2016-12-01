@@ -29,6 +29,7 @@ nav.nav {
         }
         li {
             display: inline-block;
+            width: 180px;
             @media #{$small-and-down} {
                 //mobile
                 width:33%;
@@ -36,6 +37,7 @@ nav.nav {
             a {
                 padding: 0;
                 height: 100%;
+                width:calc(100% - 2px);
                 margin-right: 2px;
                 position: relative;
                 @media #{$small-and-down} {
@@ -47,7 +49,6 @@ nav.nav {
                     border-right: 2px $offWhite solid;
                     margin-top: 11px;
                     margin-bottom: 11px;
-                    padding: 0 55px;
                     display: inline-block;
                     width: calc(100% + 2px);
                 }
