@@ -8,18 +8,27 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
         audioElement: audioElement,
         songList: [],
         curSong: {},
-        curIndex: 0,
+        curIndex: undefined,
         playing: false,
         position: 0,
         curPosition: 0,
         scrollTimer: null,
 
         play: function(i) {
+            if(i === this.curIndex) {
+                //do nothing if trying to play the current song or play/pause
+                this.playPause();
+                return;
+            }
             this.audioElement.src = this.songList[i].mp3;
             this._setCurSong(i);
             this._startPlayBack();
         },
         playPause: function() {
+            if (!this.curIndex) {
+                this.curIndex = 0;
+                this._setCurSong(this.curIndex);
+            }
             if (this.playing) {
                 this._stopPlayBack()
             } else {
@@ -40,7 +49,7 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
             //init
             var self = this;
             this.songList = angular.copy(songList);
-            this._setCurSong(this.curIndex);
+            //this._setCurSong(this.curIndex);
             this.audioElement.ontimeupdate = function() {
                 self.updateCurPosition();
             };
