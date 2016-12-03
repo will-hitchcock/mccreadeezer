@@ -32,12 +32,31 @@ pageCtrls
     .controller('MusicCtrl', ['$scope', '$http', 'PlayerService', function($scope, $http, $playerService) {
         $http.get('json/music.json').success(function(data) {
             $scope.music = data;
-            //$playerService.populateSongList($scope.music.songs);
         });
 
         $scope.playSong = function($index) {
             $playerService.play($index);
         }
+
+        $scope.$watch(
+            function() {
+                return $playerService.curIndex;
+            },
+            function(value) {
+                $scope.curIndex = value;
+            },
+            true
+        );
+
+        $scope.$watch(
+            function() {
+                return $playerService.playing;
+            },
+            function(value) {
+                $scope.playing = value;
+            },
+            true
+        );
     }])
     .controller('VideoCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
         $http.get('json/video.json').success(function(data) {

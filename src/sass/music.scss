@@ -1,8 +1,6 @@
 .music {
 
-    @media #{$small-and-down}{
-        padding-bottom: 165px;
-    }
+    
     
     @media #{$medium-and-up} {
         .btn {
@@ -18,6 +16,13 @@
             min-height: 100%;
 
         }
+        .right {
+            padding-top:90px;
+        }
+
+        h6 {
+            font-size: 1.8rem;
+        }
     }
     .btn {
         &.wide {
@@ -25,50 +30,109 @@
         }
     }
     .left {
+        background-color: $offWhite;
         padding: 0 2em;
         .album-info {
             position: relative;
             .text {
                 position: absolute;
+                color: $offBlack;
                 bottom: 0;
                 margin-left: 1.5rem;
-                h5 {
+                p {
+                    margin: 0;
+                    font-weight: 600;
+                }
+                h6 {
                     margin-bottom: 0;
+                    font-weight: 300;
                 }
             }
         }
     }
     .right {
-        padding: 1em 2em 0;
+        padding: 90px 2em 0;
+        height: 100%;
+        overflow: auto;
     }
-    .track-list {
-        .material-icons {
-            color: $gold;
-            border-radius: 50%;
-            border: 2px solid $gold;
-            font-size: 2.4rem;
-            @media #{$small-and-down} {
-                // styles for small screens and down
-                //mobile
-                font-size: 1.6rem;
+
+    .header {
+        font-weight: bold;
+    }
+    .song {
+        cursor: pointer;
+        font-weight: 300;
+        .title {
+            overflow: hidden;
+            position: relative;
+            &:after {
+                display: block;
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                top: 0px;
+                width: 30px;
+                content: "";
+                background: linear-gradient(to right, rgba(37, 37, 37, 0), rgb(37, 37, 37));
+            }
+            span {
+                white-space: nowrap;
             }
         }
-        .song {
-            cursor: pointer;
-            padding: 1rem;
-            div {
-                padding-bottom: 1rem;
-                border-bottom: 1px solid $white;
-                span {
-                    transform: none;
-                    font-size: 1.4rem;
-                    padding-left: 1rem;
-                }
+        i.material-icons {
+            font-size: 2rem;
+            display: none;
+        }
+        .num {
+            display: inline;
+        }
+        &:hover, &.active {
+            .title:after {
+                background: linear-gradient(to right, rgba(175, 137, 51, 0), rgb(175, 137, 51));
             }
-            @media #{$small-and-down} {
-                // styles for small screens and down
-                //mobile
-                padding: .6rem 1rem;
+            i.material-icons {
+                display: inline;
+            }
+            .num {
+                display: none;
+            }
+            background-color: $gold;
+        }
+    }
+
+    .song, .header {
+        padding: 1rem;
+        span {
+            font-size: 1.4rem;
+        }
+        @media #{$small-and-down} {
+            // styles for small screens and down
+            //mobile
+            padding: .6rem 1rem;
+        }
+    }
+
+
+    @media #{$small-and-down}{
+        padding-bottom: 56px;
+        .right {
+            padding: 1rem 4rem 0 2rem;
+            height: auto;
+            overflow: visible;
+        }
+        .left {
+
+            padding: 0;
+            .album-info {
+                .text {
+                    position: relative;
+                    transform: translateY(-22px);
+                }
+                .btn {
+                    width: 58.3333333333%;
+                    position: absolute;
+                    bottom: 0;
+                }
             }
         }
     }
