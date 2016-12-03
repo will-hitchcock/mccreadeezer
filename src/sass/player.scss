@@ -38,6 +38,9 @@
     }
     .small {
         .fixed-action-btn {
+            i {
+                color: $offBlack; 
+            }
             bottom: 55px;
             right: 18px;
         }
