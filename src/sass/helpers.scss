@@ -15,6 +15,18 @@ section {
     }
 }
 
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+}
+
+p {
+    font-weight: 300;
+}
+
+h6 {
+    font-size: 1.3rem;
+}
+
 nav {
     &.spacer {
         height: 46px;
