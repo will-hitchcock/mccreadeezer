@@ -20,10 +20,12 @@
             height: 100%;
         }
         .info {
-            padding: 1rem;
-            h5,
+            padding: 10px 2rem 0;
             h6 {
-                margin: 0;
+                margin-bottom: 0;
+            }
+            h7 {
+                opacity: .75;
             }
         }
         .controls {
@@ -31,7 +33,7 @@
             padding: 0 1rem;
             .material-icons {
                 cursor: pointer;
-                font-size: 4rem;
+                font-size: 3.5rem;
                 margin: 0 .5rem;
             }
         }
