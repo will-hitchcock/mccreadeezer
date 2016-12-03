@@ -15,6 +15,7 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
         scrollTimer: null,
 
         play: function(i) {
+
             if(i === this.curIndex) {
                 //do nothing if trying to play the current song or play/pause
                 this.playPause();
@@ -37,19 +38,19 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
         },
         next: function() {
             //implement next
-            this.curIndex++;
-            this.play(this.curIndex);
+            this.play(this.curIndex + 1);
         },
         prev: function() {
             //implement prev
-            this.curIndex--;
-            this.play(this.curIndex);
+            this.play(this.curIndex - 1);
         },
         populateSongList: function(songList) {
             //init
             var self = this;
             this.songList = angular.copy(songList);
-            //this._setCurSong(this.curIndex);
+            
+            this.curSong = angular.copy(songList[0]);
+            
             this.audioElement.ontimeupdate = function() {
                 self.updateCurPosition();
             };
