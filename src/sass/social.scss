@@ -11,7 +11,8 @@
     	background-color:$gold;
     	line-height: 46px;
     	z-index: 1;
-    	ul {
+    	width: 100%;
+    	.row {
     		height: 100%;
     		width: 100%;
     		text-align: center;
@@ -19,12 +20,9 @@
     		align-items: center;
     		justify-content: center;
     		margin:0;
-    		li {
-    			display: inline-block;
-    			padding: 0 10vw;
+    		.col {
     			a {
     				i {
-
     					font-size: 26px;
     				}
     				color: $offBlack;
@@ -33,7 +31,6 @@
     	}
     }
 	.large {
-
 		.fixed-action-btn {
 			i {
 				color: $offBlack;
