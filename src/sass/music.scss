@@ -104,6 +104,9 @@
         padding: 1rem;
         span {
             font-size: 1.4rem;
+            @media #{$xsmall-and-down} {
+                font-size: 1.3rem;
+            }
         }
         @media #{$small-and-down} {
             // styles for small screens and down

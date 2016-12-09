@@ -34,7 +34,10 @@
 
 $bp-desktop: ;
 $bp-mobile: ;
-$bp-xsmall: 320px;
+$xsmall-screen: 370px;
+
+
+$xsmall-and-down: "only screen and (max-width : #{$xsmall-screen})";
 
 /* 1. Colors
    ========================================================================== */
