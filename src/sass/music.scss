@@ -88,7 +88,7 @@
         }
         &:hover, &.active {
             .title:after {
-                background: linear-gradient(to right, rgba(175, 137, 51, 0), rgb(175, 137, 51));
+                background: linear-gradient(to right, rgba(175, 137, 51, 0), $gold);
             }
             i.material-icons {
                 display: inline;
