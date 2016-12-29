@@ -28,13 +28,24 @@
         }
         .valign-wrapper {
             align-items: flex-start;
+            overflow: auto;
+            height: calc(60vh - 92px);
         }
         .body-text {
             font-size: 1rem;
+            padding-bottom: 55px;
         }
         .valign {
-            padding-bottom: 20px;
             transform: none;
+            &:after {
+                content: " ";
+                height: 75px;
+                background: linear-gradient(to bottom, rgba(37, 37, 37, 0), $offBlack);
+                display: block;
+                position: absolute;
+                width: 100%;
+                bottom: 46px;
+            }
         }
     }
     @media #{$medium-and-up} {

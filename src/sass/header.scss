@@ -1,4 +1,11 @@
 .header {
+    form {
+        margin-top: 20px;
+        input {
+            display: block;
+            margin: 0 auto;
+        }
+    }
     position: relative;
     margin-top: 0;
     padding: 0;
@@ -34,13 +41,19 @@
             }
         }
         .content-sm {
+            form {
+                margin-top: -1rem;
+            }
             position: absolute;
             top: 0;
             width: 100%;
             height: calc(100% - 46px);
             margin-top: 46px;
             img {
-                width: 100%;
+                max-width: 100%;
+                max-height: 65%;
+                margin: 0 auto;
+                display: block;
             }
             h4 {
                 text-transform: uppercase;

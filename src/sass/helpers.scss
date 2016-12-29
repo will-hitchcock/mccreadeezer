@@ -47,6 +47,7 @@ main {
 
 .gold {
     background-color: $gold;
+    color: $offBlack;
     &.btn:hover,
     &.btn-large:hover {
         background-color: $gold;
@@ -80,6 +81,8 @@ main {
     height: auto;
     &.wide {
         width: 55%;
+        display: block;
+        margin: 0 auto;
     }
     &.blk {
         background-color: $offBlack;
@@ -247,7 +250,10 @@ footer {
         margin: .6rem 0;
     }
     .btn {
-        font-size: 1.2rem;
+        &.wide {
+            width: 50%;
+        }
+        font-size: 1rem;
     }
 }
 
