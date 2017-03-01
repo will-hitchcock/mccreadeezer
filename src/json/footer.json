@@ -1,0 +1,12 @@
+{
+    "copyright": "William J Hitchcock. All Rights Reserved.",
+    "header": "Social",
+    "networks": [{
+    	"icon": "fa-github",
+    	"href": "https://github.com/DrCaptScientist/"
+    }, {
+    	"icon": "fa-linkedin",
+    	"href": "https://www.linkedin.com/in/williamhitchcock"
+
+    }]
+}

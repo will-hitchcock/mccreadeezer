@@ -1,0 +1,27 @@
+{
+	"parent": {
+		"name":"Facebook",
+		"icon":"large fa fa-facebook",
+		"href":"https://www.facebook.com/mccreadeezer"
+	}, 
+	"networks": [{
+		"name":"Facebook",
+		"icon":"fa fa-facebook",
+		"href":"https://www.facebook.com/mccreadeezer"
+	}, {
+		"name":"SoundCloud",
+		"icon":"fa fa-soundcloud",
+		"href":"https://soundcloud.com/dwes45rxr",
+		"desktop": "true"
+	}, {
+		"name":"Instagram",
+		"icon":"fa fa-instagram",
+		"href":"https://www.instagram.com/mccreadeezer/",
+		"desktop": "true"
+	}, {
+		"name":"Twitter",
+		"icon":"fa fa-twitter",
+		"href":"https://twitter.com/McCreaDeezer",
+		"desktop": "true"
+	}]
+}

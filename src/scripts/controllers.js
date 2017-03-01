@@ -1,4 +1,4 @@
-var pageCtrls = angular.module('pageCtrl', ['ngAnimate', 'slickCarousel', 'angular-inview']);
+var pageCtrls = angular.module('pageCtrl', []);
 
 pageCtrls
     .controller('HeadCtrl', ['$scope', '$http', function($scope, $http) {

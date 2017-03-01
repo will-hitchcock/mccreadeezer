@@ -1,0 +1,81 @@
+{
+	"coverArt": "img/graphics/lead-image-home-mobile.jpg",
+	"releaseDate": "October 18, 2016",
+	"artist": "McCrea Deezer",
+	"title": "LAIKI (Life As I Know It)",
+	"btnText":"Download LAIKI",
+	"btnUrl":"media/LAIKI/LAIKI.zip",
+	"songs": [{
+		"name":"1sThings1st/RoaD",
+		"mp3":"media/LAIKI/01 1sThings1st_RoaD.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "4:52"
+	}, {
+		"name":"Aint I",
+		"mp3":"media/LAIKI/02 Aint I.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "3:43"
+	},{
+		"name":"Get It Right",
+		"mp3":"media/LAIKI/03 Get It Right.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "3:12"
+	},{
+		"name":"Little Story",
+		"mp3":"media/LAIKI/04 Little Story.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "2:08"
+	},{
+		"name":"Love Don't",
+		"mp3":"media/LAIKI/05 Love Don't.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "3:54"
+	},{
+		"name":"Dreams, Welcome",
+		"mp3":"media/LAIKI/06 Dreams, Welcome.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "3:53"
+	},{
+		"name":"Mirage",
+		"mp3":"media/LAIKI/07 Mirage.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "3:13"
+	},{
+		"name":"Take Em Back",
+		"mp3":"media/LAIKI/08 Take Em Back.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "4:00"
+	},{
+		"name":"Track 9ine",
+		"mp3":"media/LAIKI/09 Track 9ine.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "5:38"
+	},{
+		"name":"Shapes",
+		"mp3":"media/LAIKI/10 Shapes.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "4:35"
+	},{
+		"name":"Rockstar",
+		"mp3":"media/LAIKI/11 Rockstar.mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "3:26"
+	},{
+		"name":"DtTU (Debt to The Universe)",
+		"mp3":"media/LAIKI/12 DtTU (Debt to The Universe).mp3",
+		"art":"img/graphics/lead-image-home-mobile.jpg",
+		"artist": "McCrea Deezer",
+		"length": "4:20"
+	}]
+}
