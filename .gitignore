@@ -18,22 +18,7 @@ Thumbs.db
 ########
 build/
 
-# Data #
-########
-*.json
-
 # Components #
 ##############
 bower_components/
-components/
 node_modules/
-
-# Images #
-##########
-img/
-media/
-*.ico
-
-# Miscellaneous #
-##########
-misc/
