@@ -1,1 +1,1 @@
-web: node index.js
+web: node build/prod/index.js
