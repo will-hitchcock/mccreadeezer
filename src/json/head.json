@@ -1,0 +1,22 @@
+{
+    "title": "McCrea Deezer",
+    "metas": [{
+        "charset":"utf-8"
+    }, {
+        "httpEquiv":"X-UA-Compatible",
+        "content":"IE=edge"
+    }, {
+        "name":"viewport",
+        "content":"width=device-width, initial-scale=1, maximum-scale=1"
+    }, {
+        "name":"viewport",
+        "content":"width=device-width, user-scalable=no"
+    }],
+    "links": [{
+        "rel":"shortcut icon",
+        "href":"favicon.ico"
+    }, {
+        "href":"https://fonts.googleapis.com/icon?family=Material+Icons",
+        "rel":"stylesheet"
+    }]
+}
