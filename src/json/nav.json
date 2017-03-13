@@ -2,16 +2,16 @@
 	"links": [{
 	    "name": "Home",
 	    "class": "site-logo",
-	    "href": "#"
+	    "href": "#!/"
 	}, {
 	    "name": "Bio",
 	    "class": "material-icons",
 	    "icon": "perm_identity",
-	    "href": "#/bio"
+	    "href": "#!/bio"
 	}, {
 	    "name": "Music",
 	    "class": "material-icons",
 	    "icon": "music_note",
-	    "href": "#/music"
+	    "href": "#!/music"
 	}]
 }
