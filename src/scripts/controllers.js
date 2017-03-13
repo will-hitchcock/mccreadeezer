@@ -2,18 +2,18 @@ var pageCtrls = angular.module('pageCtrl', []);
 
 pageCtrls
     .controller('HeadCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('json/head.json').success(function(data) {
-            $scope.head = data;
+        $http.get('json/head.json').then(function(resp) {
+            $scope.head = resp.data;
         });
     }])
     .controller('HeaderCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('json/header.json').success(function(data) {
-            $scope.header = data;
+        $http.get('json/header.json').then(function(resp) {
+            $scope.header = resp.data;
         });
     }])
     .controller('NavCtrl', ['$scope', '$http', '$location', function($scope, $http,  $location) {
-        $http.get('json/nav.json').success(function(data) {
-            $scope.nav = data;
+        $http.get('json/nav.json').then(function(resp) {
+            $scope.nav = resp.data;
         });
 
         $scope.curPage = '#' + $location.url();
@@ -23,15 +23,15 @@ pageCtrls
         });
     }])
     .controller('BioCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('json/bio.json').success(function(data) {
-            $scope.bio = data;
+        $http.get('json/bio.json').then(function(resp) {
+            $scope.bio = resp.data;
         });
 
 
     }])
     .controller('MusicCtrl', ['$scope', '$http', 'PlayerService', function($scope, $http, $playerService) {
-        $http.get('json/music.json').success(function(data) {
-            $scope.music = data;
+        $http.get('json/music.json').then(function(resp) {
+            $scope.music = resp.data;
         });
 
         $scope.playSong = function($index) {
@@ -59,8 +59,8 @@ pageCtrls
         );
     }])
     .controller('VideoCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
-        $http.get('json/video.json').success(function(data) {
-            $scope.video = data;
+        $http.get('json/video.json').then(function(resp) {
+            $scope.video = resp.data;
             for (var i = $scope.video.length - 1; i >= 0; i--) {
                 $scope.video[i].trustedUrl = $sce.trustAsResourceUrl($scope.video[i].url);
             };
@@ -73,8 +73,8 @@ pageCtrls
         }
     }])
     .controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('json/event.json').success(function(data) {
-            $scope.event = data;
+        $http.get('json/event.json').then(function(resp) {
+            $scope.event = resp.data;
             $scope.slickConfig.enabled = true;
         });
         $scope.slickConfig = {
@@ -94,8 +94,8 @@ pageCtrls
     }])
     .controller('PlayerCtrl', ['$scope', '$http', 'PlayerService', function($scope, $http, $playerService) {
         
-        $http.get('json/music.json').success(function(data) {
-            $scope.music = data;
+        $http.get('json/music.json').then(function(resp) {
+            $scope.music = resp.data;
             $playerService.populateSongList($scope.music.songs);
         });
 
@@ -144,7 +144,7 @@ pageCtrls
         );
     }])
     .controller('SocialCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('json/social.json').success(function(data) {
-            $scope.social = data;
+        $http.get('json/social.json').then(function(resp) {
+            $scope.social = resp.data;
         });
     }]);
