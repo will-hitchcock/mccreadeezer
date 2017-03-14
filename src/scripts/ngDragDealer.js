@@ -1,11 +1,11 @@
-angular.module('dragDealer', [])
+angular.module('dragdealer', [])
 
 //set the height of the target element to the height of its child .ng-enter
 //useful for animations that require position absolute during the animation
 
-.directive('dragDealer', ['$interval', function($interval) {
+.directive('dragdealer', ['$interval', function($interval) {
 
-  function link(scope, element, attrs) {
+  function link($scope, $element, attrs) {
 
     // bool disabled=false Init Dragdealer in a disabled state. The handle will have a .disabled class.
     // bool horizontal=true Enable horizontal dragging.
@@ -28,6 +28,7 @@ angular.module('dragDealer', [])
     // bool css3=true Use css3 transform in modern browsers instead of absolute positioning.
     // fn customRequestAnimationFrame Provide custom requestAnimationFrame function (used in tests).
     // fn customCancelAnimationFrame Provide custom cancelAnimationFrame function (used in tests).
+
     var 
       defaults = {
         disabled: false,
@@ -45,48 +46,68 @@ angular.module('dragDealer', [])
         right: 0,
         handleClass: 'handle',
         css3: true
-
       },
       options = {
-        disabled: attrs.ddDisabled,
-        horizontal: attrs.ddHorizontal,
-        vertical: attrs.ddVertical,
-        x: attrs.ddX,
-        y: attrs.ddY,
-        steps: attrs.ddSteps,
-        snap: attrs.ddSnap,
-        slide: attrs.ddSlide,
-        loose: attrs.ddLoose,
-        top: attrs.ddTop,
-        bottom: attrs.ddBottom,
-        left: attrs.ddLeft,
-        right: attrs.ddRight,
-        handleClass: attrs.ddHandleClass,
-        css3: attrs.ddCss3
+        disabled: $scope.disabled,
+        horizontal: $scope.horizontal,
+        vertical: $scope.vertical,
+        x: $scope.x,
+        y: $scope.y,
+        steps: $scope.steps,
+        snap: $scope.snap,
+        slide: $scope.slide,
+        loose: $scope.loose,
+        top: $scope.top,
+        bottom: $scope.bottom,
+        left: $scope.left,
+        right: $scope.right,
+        handleClass: $scope.handleClass,
+        css3: $scope.css3
       };
 
-    settings = $.extend({}, defaults, options);
-    // console.log(attrs, settings);
 
-    new Dragdealer(element[0], settings);
+    settings = angular.element.extend({}, defaults, options, $scope.options);
 
-    element.on('$destroy', function() {
-      // Dragdealer.destroy();
+    var drag = new Dragdealer($element[0], settings);
+
+    //watch for changes to x and y and update position of drag
+    //could add option for this behavior
+    $scope.$watch(
+      function() {
+          return $scope.options;
+      },
+      function(value) {
+          x = value.x/100 || 0;
+          y = value.y/100 || 0;
+
+          drag.setValue(x, y);
+      }, true);
+
+    $element.on('$destroy', function() {
+
     });
-
-    // start the UI update process; save the timeoutId for canceling
-    
-    //TODO: Add debounce logic to this to prevent this event firing many times per animation sequence
-    // timeoutId = $interval(function() {
-    //   var height = 0;
-  		// element.children('.ng-enter').each(function() {
-  		// 	height = $(this).height();
-  		// 	element.css('min-height', height);
-    //   });
-    // }, 100);
   }
 
   return {
+    restrict: 'E',
+    scope: {
+      disabled: '=disabled',
+      horizontal: '=horizontal',
+      vertical: '=vertical',
+      x: '=x',
+      y: '=y',
+      steps: '=steps',
+      snap: '=snap',
+      slide: '=slide',
+      loose: '=loose',
+      top: '=top',
+      bottom: '=bottom',
+      left: '=left',
+      right: '=right',
+      handleClass: '=handleClass',
+      css3: '=css3',
+      options: '=options'
+    },
     link: link
   };
 }]);
