@@ -16,12 +16,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "angular#1.5.7",
+    "angular": "angular#1.6.2",
     "Materialize": "materialize#0.97.6",
-    "angular-route": "1.5.7",
-    "font-awesome": "4.6.3"
-  },
-  "resolutions": {
-    "angular": "1.5.7"
+    "angular-route": "1.6.2",
+    "font-awesome": "4.6.3",
+    "dragdealer": "0.9.9"
   }
 }
