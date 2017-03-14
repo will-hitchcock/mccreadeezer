@@ -40,7 +40,7 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.curIndex;
+                return $playerService._curIndex;
             },
             function(value) {
                 $scope.curIndex = value;
@@ -50,7 +50,7 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.playing;
+                return $playerService._playing;
             },
             function(value) {
                 $scope.playing = value;
@@ -101,17 +101,22 @@ pageCtrls
         });
         $scope.curSong = angular.copy($playerService.curSong);
         $scope.playing = $playerService.playing;
-        $scope.curPosition = $playerService.curPosition;
+        // $scope.curPosition = $playerService.curPosition;
+        $scope.curPosition = 50;
 
         $scope.dragOptions = {
-            animationCallback: function(x, y){
+            dragStartCallback: function(x, y) {
+                $playerService.stopProgressBar();
             },
-            dragStopCallback: function(x, y){
-            }
-        }
+            animationCallback: function(x, y) {
+                $scope.curPosition = (x * 100);
+            },
+            dragStopCallback: function(x, y) {
+                $playerService.resumeProgressBar();
 
-        $scope.seek = function(seekTo) {
-            $playerService.seek(seekTo);
+                var seekTo = $playerService._audioElement.duration * x;
+                $playerService.seek(seekTo);
+            }
         }
 
         $scope.playPause = function() {
@@ -128,18 +133,19 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.curPosition;
+                return $playerService._curPosition;
             },
             function(value) {
                 $scope.curPosition = value;
-                $scope.dragOptions.x = value;
 
+                // adjust the position to account for the width of the handle
+                $scope.dragOptions.x = value; 
             }
         );
 
         $scope.$watch(
             function() {
-                return $playerService.curSong;
+                return $playerService._curSong;
             },
             function(value) {
                 $scope.curSong = angular.copy(value);
@@ -149,7 +155,7 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.playing;
+                return $playerService._playing;
             },
             function(value) {
                 $scope.playing = value;
