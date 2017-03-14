@@ -22,11 +22,4 @@ var mcCreaDeezer = angular.module('mcCreaDeezer', ['ngRoute', 'pageCtrl', 'playe
             templateUrl: 'partials/header.html',
             controller: 'HeaderCtrl'
         })
-}])
-
-.run(['$rootScope', '$location', '$anchorScroll', function($rootScope, $location, $anchorScroll) {
-  //when the route is changed scroll to the proper element.
-  $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
-    if($location.hash()) $anchorScroll();  
-  });
 }]);
