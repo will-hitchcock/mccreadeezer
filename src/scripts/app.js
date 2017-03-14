@@ -8,7 +8,7 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
         audioElement: audioElement,
         songList: [],
         curSong: {},
-        curIndex: undefined,
+        curIndex: -1,
         playing: false,
         position: 0,
         curPosition: 0,
@@ -26,7 +26,7 @@ mcCreaDeezer.factory('PlayerService', ['$rootScope', '$document', function($root
             this._startPlayBack();
         },
         playPause: function() {
-            if (!this.curIndex) {
+            if (this.curIndex < 0) {
                 this.curIndex = 0;
                 this._setCurSong(this.curIndex);
             }
