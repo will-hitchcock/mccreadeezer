@@ -3,7 +3,7 @@ angular.module('dragdealer', [])
 //set the height of the target element to the height of its child .ng-enter
 //useful for animations that require position absolute during the animation
 
-.directive('dragdealer', ['$interval', function($interval) {
+.directive('dragdealer', ['$timeout', function($timeout) {
 
   function link($scope, $element, attrs) {
 
@@ -26,9 +26,7 @@ angular.module('dragdealer', [])
     // fn animationCallback(x, y) Called every animation loop, as long as the handle is being dragged or in the process of a sliding animation. The x, y positional values received by this callback reflect the exact position of the handle DOM element, which includes exceeding values (even negative values) when the loose option is set true.
     // string handleClass=handle Custom class of handle element.
     // bool css3=true Use css3 transform in modern browsers instead of absolute positioning.
-    // fn customRequestAnimationFrame Provide custom requestAnimationFrame function (used in tests).
-    // fn customCancelAnimationFrame Provide custom cancelAnimationFrame function (used in tests).
-
+    
     var 
       defaults = {
         disabled: false,
@@ -45,7 +43,8 @@ angular.module('dragdealer', [])
         left: 0,
         right: 0,
         handleClass: 'handle',
-        css3: true
+        css3: true,
+        snapOnSet: false,
       },
       options = {
         disabled: $scope.disabled,
@@ -62,16 +61,63 @@ angular.module('dragdealer', [])
         left: $scope.left,
         right: $scope.right,
         handleClass: $scope.handleClass,
-        css3: $scope.css3
+        css3: $scope.css3,
+        snapOnSet: $scope.snapOnSet
+      },
+      callbacks = {
+        callback: function(x, y) {
+          if (typeof $scope.options.callback !== 'function') {
+            return;
+          }
+
+          $timeout(function () {
+            $scope.$apply(function () {
+              $scope.options.callback(x, y);
+            });
+          });
+        },
+        dragStopCallback: function(x, y) {
+          if (typeof $scope.options.dragStopCallback !== 'function') {
+            return;
+          }
+
+          $timeout(function () {
+            $scope.$apply(function () {
+              $scope.options.dragStopCallback(x, y);
+            });
+          });
+        }, 
+        dragStartCallback: function(x, y) {
+          if (typeof $scope.options.dragStartCallback !== 'function') {
+            return;
+          }
+
+          $timeout(function () {
+            $scope.$apply(function () {
+              $scope.options.dragStartCallback(x, y);
+            });
+          });
+        },
+        animationCallback: function(x, y) {
+          if (typeof $scope.options.animationCallback !== 'function') {
+            return;
+          }
+
+          $timeout(function () {
+            $scope.$apply(function () {
+              $scope.options.animationCallback(x, y);
+            });
+          });
+        }
       };
 
-
-    settings = angular.element.extend({}, defaults, options, $scope.options);
+    settings = angular.element.extend({}, defaults, options, $scope.options, callbacks);
 
     var drag = new Dragdealer($element[0], settings);
 
     //watch for changes to x and y and update position of drag
     //could add option for this behavior
+
     $scope.$watch(
       function() {
           return $scope.options;
@@ -80,7 +126,7 @@ angular.module('dragdealer', [])
           x = value.x/100 || 0;
           y = value.y/100 || 0;
 
-          drag.setValue(x, y);
+          drag.setValue(x, y, settings.snapOnSet);
       }, true);
 
     $element.on('$destroy', function() {
@@ -106,6 +152,7 @@ angular.module('dragdealer', [])
       right: '=right',
       handleClass: '=handleClass',
       css3: '=css3',
+      snapOnSet: '=snapOnSet',
       options: '=options'
     },
     link: link
