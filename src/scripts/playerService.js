@@ -1,4 +1,4 @@
-angular.module('playerService', ['dragDealer'])
+angular.module('playerService', ['dragdealer'])
 
 .factory('PlayerService', ['$rootScope', '$document', function($rootScope, $document) {
     var audioElement = $document[0].createElement('audio'); // <-- Magic trick here
@@ -6,7 +6,7 @@ angular.module('playerService', ['dragDealer'])
         audioElement: audioElement,
         songList: [],
         curSong: {},
-        curIndex: undefined,
+        curIndex: -1,
         playing: false,
         position: 0,
         curPosition: 0,
@@ -24,7 +24,8 @@ angular.module('playerService', ['dragDealer'])
             this._startPlayBack();
         },
         playPause: function() {
-            if (!this.curIndex) {
+            console.log('playerService.playPause', this.curIndex);
+            if (this.curIndex < 0) {
                 this.curIndex = 0;
                 this._setCurSong(this.curIndex);
             }
@@ -42,12 +43,16 @@ angular.module('playerService', ['dragDealer'])
             //implement prev
             this.play(this.curIndex - 1);
         },
-        populateSongList: function(songList) {
+        seek: function(seekTo) {
+            //implement seek
+            this.audioElement.currentTime = seekTo;
+        },
+        init: function(data) {
             //init
             var self = this;
-            this.songList = angular.copy(songList);
+            this.songList = angular.copy(data.songList);
             
-            this.curSong = angular.copy(songList[0]);
+            this.curSong = angular.copy(data.songList[0]);
             
             this.audioElement.ontimeupdate = function() {
                 self.updateCurPosition();
@@ -72,10 +77,15 @@ angular.module('playerService', ['dragDealer'])
         _stopPlayBack: function() {
             this.playing = false;
             this.audioElement.pause(); //  <-- Thats all you need
+
+            console.log(this.curPosition, this.audioElement.duration);
         },
         updateCurPosition: function() {
-            this.curPosition = (this.audioElement.currentTime / this.audioElement.duration)*100;
-            $rootScope.$apply();
+            if(this.audioElement.duration){
+                this.curPosition = (this.audioElement.currentTime / this.audioElement.duration)*100;
+                $rootScope.$apply();
+            }
+            //console.log(this.curPosition, this.audioElement.currentTime, this.audioElement.duration);
         }
     }
 }]);

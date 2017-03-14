@@ -93,15 +93,26 @@ pageCtrls
         }
     }])
     .controller('PlayerCtrl', ['$scope', '$http', 'PlayerService', function($scope, $http, $playerService) {
-        
         $http.get('json/music.json').then(function(resp) {
             $scope.music = resp.data;
-            $playerService.populateSongList($scope.music.songs);
+            $playerService.init({
+                songList: $scope.music.songs
+            });
         });
-
         $scope.curSong = angular.copy($playerService.curSong);
         $scope.playing = $playerService.playing;
         $scope.curPosition = $playerService.curPosition;
+
+        $scope.dragOptions = {
+            animationCallback: function(x, y){
+            },
+            dragStopCallback: function(x, y){
+            }
+        }
+
+        $scope.seek = function(seekTo) {
+            $playerService.seek(seekTo);
+        }
 
         $scope.playPause = function() {
             $playerService.playPause();
@@ -121,6 +132,8 @@ pageCtrls
             },
             function(value) {
                 $scope.curPosition = value;
+                $scope.dragOptions.x = value;
+
             }
         );
 
