@@ -26,7 +26,7 @@ angular.module('dragdealer', [])
     // fn animationCallback(x, y) Called every animation loop, as long as the handle is being dragged or in the process of a sliding animation. The x, y positional values received by this callback reflect the exact position of the handle DOM element, which includes exceeding values (even negative values) when the loose option is set true.
     // string handleClass=handle Custom class of handle element.
     // bool css3=true Use css3 transform in modern browsers instead of absolute positioning.
-    
+
     var 
       defaults = {
         disabled: false,
@@ -130,7 +130,7 @@ angular.module('dragdealer', [])
       }, true);
 
     $element.on('$destroy', function() {
-
+      //don't know what to do
     });
   }
 

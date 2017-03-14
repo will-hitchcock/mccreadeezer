@@ -15,10 +15,10 @@
             overflow: visible;
             .determinate {
                 background-color: $gold;
+                transition: none;
                 .handle {
                     position: relative;
                     top: 2.5px;
-                    right: 5px;
                     height: 0px;
                     width: 0px;
                     border-radius: 100%;
