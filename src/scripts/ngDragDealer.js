@@ -189,7 +189,6 @@ angular.module('dragdealer', [])
           return $scope.options;
       },
       function(value) {
-        console.log(value);
           var x = value.x || 0,
               y = value.y || 0;
 
