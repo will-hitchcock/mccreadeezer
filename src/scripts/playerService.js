@@ -23,10 +23,6 @@ angular.module('playerService', ['dragdealer'])
             this._startPlayBack();
         },
         playPause: function() {
-            if (this._curIndex < 0) {
-                this._curIndex = 0;
-                this._setCurSong(this._curIndex);
-            }
             if (this._playing) {
                 this._stopPlayBack()
             } else {
@@ -48,17 +44,20 @@ angular.module('playerService', ['dragdealer'])
         init: function(data) {
             //init
             var self = this;
-            this._songList = angular.copy(data.songList);
+            self._songList = angular.copy(data.songList);
             
-            this._curSong = angular.copy(data.songList[0]);
-            
-            this._audioElement.ontimeupdate = function() {
+            // initialize to the first song
+            self._setCurSong(0);
+
+            // listen to the tracks time index and update curPosition
+            self._audioElement.ontimeupdate = function() {
                 if(!self._seeking){
                     self.updateCurPosition();
                 }
             };
 
-            this._audioElement.onended = function() {
+            // play the next song when the current song ends
+            self._audioElement.onended = function() {
                 self.next();
             }
         },
@@ -77,7 +76,6 @@ angular.module('playerService', ['dragdealer'])
         _stopPlayBack: function() {
             this._playing = false;
             this._audioElement.pause(); //  <-- Thats all you need
-
         },
         // stops the playing progress from being updated automatically
         stopProgressBar: function() {
