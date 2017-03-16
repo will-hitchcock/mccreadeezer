@@ -1,6 +1,7 @@
 <div class="player" ng-controller="PlayerCtrl">
     <div class="large">
-        <dragdealer class="progress" slide=false snap-on-set=true options="dragOptions">
+        <dragdealer class="progress" slide=false snap-on-set=true options="dragOptions" scroll-to-click=true>
+            <div class="background"></div>
             <div class="determinate" style="width: {{curPosition}}%">
                 <div class="handle"></div>
             </div>
