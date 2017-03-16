@@ -168,6 +168,10 @@ angular.module('dragdealer', [])
               settings.animationCallback(click.x, click.y);
             }
 
+            if (typeof settings.callback === 'function') {
+              settings.callback(click.x, click.y);
+            }
+
             if (typeof settings.dragStopCallback === 'function') {
               settings.dragStopCallback(click.x, click.y);
             }
