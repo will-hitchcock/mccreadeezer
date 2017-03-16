@@ -20,6 +20,7 @@
             .background {
                 background-color: $white;
                 width: 100%;
+                height: 100%;
             }
             .determinate {
                 top: 10px;
@@ -37,8 +38,12 @@
                 width: 0px;
                 border-radius: 100%;
                 background-color: $gold;
-
                 transition: height .5s, width .5s, top .5s;
+                &:hover {
+                    height: 15px;
+                    width: 15px;
+                    top: -5px;
+                }
             }
         }
         &:hover {
