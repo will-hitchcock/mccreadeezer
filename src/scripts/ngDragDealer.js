@@ -45,6 +45,7 @@ angular.module('dragdealer', [])
         handleClass: 'handle',
         css3: true,
         snapOnSet: false,
+        scrollToClick: false
       },
       options = {
         disabled: $scope.disabled,
@@ -62,7 +63,8 @@ angular.module('dragdealer', [])
         right: $scope.right,
         handleClass: $scope.handleClass,
         css3: $scope.css3,
-        snapOnSet: $scope.snapOnSet
+        snapOnSet: $scope.snapOnSet,
+        scrollToClick: $scope.scrollToClick
       },
       callbacks = {
         callback: function(x, y) {
@@ -109,11 +111,71 @@ angular.module('dragdealer', [])
             });
           });
         }
+      },
+      // helper function to get an element's exact position
+      getPosition = function(el) {
+        var xPosition = 0;
+        var yPosition = 0;
+       
+        while (el) {
+          if (el.tagName == "BODY") {
+            // deal with browser quirks with body/window/document and page scroll
+            var xScrollPos = el.scrollLeft || document.documentElement.scrollLeft;
+            var yScrollPos = el.scrollTop || document.documentElement.scrollTop;
+       
+            xPosition += (el.offsetLeft - xScrollPos + el.clientLeft);
+            yPosition += (el.offsetTop - yScrollPos + el.clientTop);
+          } else {
+            xPosition += (el.offsetLeft - el.scrollLeft + el.clientLeft);
+            yPosition += (el.offsetTop - el.scrollTop + el.clientTop);
+          }
+       
+          el = el.offsetParent;
+        }
+        return {
+          x: xPosition,
+          y: yPosition
+        };
       };
 
     settings = angular.element.extend({}, defaults, options, $scope.options, callbacks);
 
     var drag = new Dragdealer($element[0], settings);
+
+    // create an offset to account for the size of the handle
+
+    if (settings.scrollToClick) {
+      $element.on('click', function(e){
+        $timeout(function () {
+          $scope.$apply(function () {
+
+
+            var click = {},
+                position;
+
+            position = getPosition($element[0]);
+
+            click.x = (e.clientX - position.x) / $element.width();
+            click.y = (e.clientY - position.y) / $element.height();
+            
+            if (typeof settings.dragStartCallback === 'function') {
+              settings.dragStartCallback(click.x, click.y);
+            }
+
+            drag.setValue(click.x, click.y, settings.snapOnSet);
+
+            if (typeof settings.animationCallback === 'function') {
+              settings.animationCallback(click.x, click.y);
+            }
+
+            if (typeof settings.dragStopCallback === 'function') {
+              settings.dragStopCallback(click.x, click.y);
+            }
+
+          })
+        });
+      });
+    }
 
     //watch for changes to x and y and update position of drag
     //could add option for this behavior
@@ -123,8 +185,9 @@ angular.module('dragdealer', [])
           return $scope.options;
       },
       function(value) {
-          x = value.x/100 || 0;
-          y = value.y/100 || 0;
+        console.log(value);
+          var x = value.x || 0,
+              y = value.y || 0;
 
           drag.setValue(x, y, settings.snapOnSet);
       }, true);
@@ -153,6 +216,7 @@ angular.module('dragdealer', [])
       handleClass: '=handleClass',
       css3: '=css3',
       snapOnSet: '=snapOnSet',
+      scrollToClick: '=scrollToClick',
       options: '=options'
     },
     link: link

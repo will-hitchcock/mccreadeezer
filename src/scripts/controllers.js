@@ -139,7 +139,7 @@ pageCtrls
                 $scope.curPosition = value;
 
                 // adjust the position to account for the width of the handle
-                $scope.dragOptions.x = value; 
+                $scope.dragOptions.x = value / 100; 
             }
         );
 
