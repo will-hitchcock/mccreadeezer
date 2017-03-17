@@ -4,7 +4,7 @@
     "mobile": {
         "leadImg": "img/graphics/lead-image-home-mobile.jpg",
         "btnText": "Listen to LAIKI",
-        "btnHref": "#/music"
+        "btnHref": "#!/music"
     },
     "desktop": {
         "text": "Listen to McCrea Deezer's debut album LAIKI (Life As I Know It)."
