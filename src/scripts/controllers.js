@@ -40,7 +40,7 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.curIndex;
+                return $playerService._curIndex;
             },
             function(value) {
                 $scope.curIndex = value;
@@ -50,7 +50,7 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.playing;
+                return $playerService._playing;
             },
             function(value) {
                 $scope.playing = value;
@@ -93,15 +93,31 @@ pageCtrls
         }
     }])
     .controller('PlayerCtrl', ['$scope', '$http', 'PlayerService', function($scope, $http, $playerService) {
-        
         $http.get('json/music.json').then(function(resp) {
             $scope.music = resp.data;
-            $playerService.populateSongList($scope.music.songs);
+            $playerService.init({
+                songList: $scope.music.songs
+            });
         });
-
         $scope.curSong = angular.copy($playerService.curSong);
         $scope.playing = $playerService.playing;
-        $scope.curPosition = $playerService.curPosition;
+        // $scope.curPosition = $playerService.curPosition;
+        $scope.curPosition = 50;
+
+        $scope.dragOptions = {
+            dragStartCallback: function(x, y) {
+                $playerService.stopProgressBar();
+            },
+            animationCallback: function(x, y) {
+                $scope.curPosition = (x * 100);
+            },
+            dragStopCallback: function(x, y) {
+                $playerService.resumeProgressBar();
+
+                var seekTo = $playerService._audioElement.duration * x;
+                $playerService.seek(seekTo);
+            }
+        }
 
         $scope.playPause = function() {
             $playerService.playPause();
@@ -117,16 +133,19 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.curPosition;
+                return $playerService._curPosition;
             },
             function(value) {
                 $scope.curPosition = value;
+
+                // adjust the position to account for the width of the handle
+                $scope.dragOptions.x = value / 100; 
             }
         );
 
         $scope.$watch(
             function() {
-                return $playerService.curSong;
+                return $playerService._curSong;
             },
             function(value) {
                 $scope.curSong = angular.copy(value);
@@ -136,7 +155,7 @@ pageCtrls
 
         $scope.$watch(
             function() {
-                return $playerService.playing;
+                return $playerService._playing;
             },
             function(value) {
                 $scope.playing = value;

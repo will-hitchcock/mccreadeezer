@@ -11,9 +11,47 @@
         z-index: 2;
         .progress {
             margin: 0;
-            background-color: $white;
+            overflow: visible;
+            padding:10px 0;
+            box-sizing: content-box;
+            background-color: transparent;
+            top: -10px;
+            margin-bottom: -20px;
+            cursor: pointer;
+            .background {
+                background-color: $white;
+                width: 100%;
+                height: 100%;
+            }
             .determinate {
+                top: 10px;
+                bottom: 10px;
+                height: 4px;
                 background-color: $gold;
+                transition: none;
+            }
+            .handle {
+                height: 15px;
+                width: 15px;
+                position: relative;
+                top: 2.5px;
+                height: 0px;
+                width: 0px;
+                border-radius: 100%;
+                background-color: $gold;
+                transition: height .5s, width .5s, top .5s;
+                &:hover {
+                    height: 15px;
+                    width: 15px;
+                    top: -5px;
+                }
+            }
+        }
+        &:hover {
+            .progress .handle {
+                height: 15px;
+                width: 15px;
+                top: -5px;
             }
         }
         img {

@@ -71,9 +71,9 @@ module.exports = function(grunt) {
                     filter: 'isFile'
                 }, {
                     expand: true,
-                    cwd: 'components/dist',
-                    src: '**/*',
-                    dest: '<%= pkg.dev.app %>/components/',
+                    cwd: '<%= pkg.src %>/sass',
+                    src: '**/*.scss',
+                    dest: '<%= pkg.dev.app %>/src/sass',
                     filter: 'isFile'
                 }, {
                     expand: true,
@@ -119,12 +119,6 @@ module.exports = function(grunt) {
                     cwd: '<%= pkg.src %>/json/',
                     src: '**/*',
                     dest: '<%= pkg.prod.app %>/json/',
-                    filter: 'isFile'
-                }, {
-                    expand: true,
-                    cwd: 'components/dist',
-                    src: '**/*',
-                    dest: '<%= pkg.prod.app %>/components/',
                     filter: 'isFile'
                 }, {
                     expand: true,

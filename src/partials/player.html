@@ -1,8 +1,11 @@
 <div class="player" ng-controller="PlayerCtrl">
     <div class="large">
-        <div class="progress">
-            <div class="determinate" style="width: {{curPosition}}%"></div>
-        </div>
+        <dragdealer class="progress" slide=false snap-on-set=true options="dragOptions" scroll-to-click=true>
+            <div class="background"></div>
+            <div class="determinate" style="width: {{curPosition}}%">
+                <div class="handle"></div>
+            </div>
+        </dragdealer>
         <img ng-src="{{curSong.art}}" alt="" class="left">
         <div class="info left">
             <h6>{{curSong.name}}</h6>

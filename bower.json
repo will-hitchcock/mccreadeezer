@@ -19,6 +19,7 @@
     "angular": "angular#1.6.2",
     "Materialize": "materialize#0.97.6",
     "angular-route": "1.6.2",
-    "font-awesome": "4.6.3"
+    "font-awesome": "4.6.3",
+    "dragdealer": "0.9.9"
   }
 }
